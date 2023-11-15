@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CacheService {
 
-    Icache<String,String> cache = new cacheFactory<String,String>().defaultCache(5);
+    Icache<String,String> cache = new cacheFactory<String,String>().defaultCache(3);
 
     public String get(String key) throws NotFound {
         return this.cache.get(key);

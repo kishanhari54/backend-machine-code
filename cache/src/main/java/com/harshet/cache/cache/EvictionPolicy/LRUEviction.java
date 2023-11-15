@@ -14,12 +14,13 @@ public class LRUEviction<key> implements  EvictionPolicy<key>{
     public void keyAccessed(key Key) {
     // Check if Key Exist , then if true , move it to last node of linked list , if false , add
         if(mapper.containsKey(Key)){
-            dll.detachNode( mapper.get(Key));
-            dll.addNodeToLast(mapper.get(Key));
+            //dll.detachNode( mapper.get(Key));
+            //dll.addNodeToLast(mapper.get(Key));
+            dll.shiftToLast(mapper.get(Key));
         }
         else {
             DoublyLinkedListNode<key> node = new DoublyLinkedListNode<>(Key);
-            dll.addElementToLast(Key);
+            node =  dll.addElementToLast(Key);
             mapper.put(Key,node);
         }
     }
