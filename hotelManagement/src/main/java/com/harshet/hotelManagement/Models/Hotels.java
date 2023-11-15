@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -28,6 +29,13 @@ public class Hotels extends BaseModel{
 
     @OneToMany(mappedBy = "hotel",cascade = {CascadeType.REMOVE})
     private List<HotelRoom> rooms;
+
+    @OneToMany(mappedBy = "hotel_booking")
+    /*@JoinTable(
+            name = "hotel_booking_mapping",
+            joinColumns = @JoinColumn(name = "hotel_id"),
+            inverseJoinColumns = @JoinColumn(name = "booking_id"))*/
+    List<RoomBookings> bookings = new ArrayList<>();
 
     /*public static Hotels from(requestHotels hotl){
         Hotels hotelResponse = new Hotels();
